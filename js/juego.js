@@ -28,18 +28,33 @@ Podés ver su implementación en la ultima parte de este codigo. */
 function mostrarInstrucciones(instrucciones) {
     let response = "";
     for (let i = 0; i < instrucciones.length; i++) {
-      response += "<li><p>" + instrucciones[i] + "</p></li>";
+      mostrarInstruccionEnLista(instrucciones[i], 'lista-instrucciones')
     }
-    document.getElementById('lista-instrucciones').innerHTML = response;
 }
 
 /* COMPLETAR: Crear función que agregue la última dirección al arreglo de movimientos
 y utilice actualizarUltimoMovimiento para mostrarlo en pantalla */
 
+document.onkeyup = function(e){
+  ultimoMovimiento(e);
+}
+
+function ultimoMovimiento(e) {
+  if(actualizarUltimoMovimiento(e.keyCode)){
+    movimientos.push(actualizarUltimoMovimiento(e.keyCode))
+  }
+}
+
 /* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora. 
 Existen diferentes formas de hacer este chequeo a partir de la grilla. */
 function chequearSiGano() {
-    //COMPLETAR
+  let cantidad = 1,
+      contador = 0;
+  for (let i = 0; i < grilla.length; i++){ 
+    if(grilla[i][contador] != cantidad){ return false; }
+      else { cantidad++; contador++; }
+  }
+  return true;
 }
 
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
@@ -172,17 +187,19 @@ function actualizarUltimoMovimiento(direccion) {
   ultimoMov = document.getElementById('flecha');
   switch (direccion) {
     case codigosDireccion.ARRIBA:
-      ultimoMov.textContent = '↑';
+      return ultimoMov.textContent = '↑';
       break;
     case codigosDireccion.ABAJO:
-      ultimoMov.textContent = '↓';
+      return ultimoMov.textContent = '↓';
       break;
     case codigosDireccion.DERECHA:
-      ultimoMov.textContent = '→';
+      return ultimoMov.textContent = '→';
       break;
     case codigosDireccion.IZQUIERDA:
-      ultimoMov.textContent = '←';
+      return ultimoMov.textContent = '←';
       break;
+    default:
+      return false;
   }
 }
 
@@ -204,7 +221,7 @@ function mezclarPiezas(veces) {
   if (veces <= 0) {
     return;
   }
-  
+  console.log("aca");
   var direcciones = [codigosDireccion.ABAJO, codigosDireccion.ARRIBA,
       codigosDireccion.DERECHA, codigosDireccion.IZQUIERDA
     ];
@@ -249,6 +266,7 @@ function iniciar() {
     mostrarInstrucciones(instrucciones);
     mezclarPiezas(30);
     capturarTeclas();
+    console.log(grilla);
 }
 
 // Ejecutamos la función iniciar
