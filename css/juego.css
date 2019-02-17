@@ -7,6 +7,13 @@ body {
   min-height: 100%;
   background-image: url(../images/adventure.jpg);
 }
+
+#titulo h2{
+  padding: 10px;
+  background: #fbfbfb;
+  margin: 0;
+}
+
 ul {
   padding-left: 0;
   list-style: none;
@@ -41,6 +48,7 @@ li::before {
   padding: 30px;
   color: #000;
   width: 40%;
+  text-align: center;
 }
 
 .col-60 {
@@ -54,13 +62,53 @@ li::before {
   margin: 0px auto;
 }
 
+.col-60 .comienzo_content {
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.col-60 .comienzo_content .comienzo{
+  line-height: 500px;
+}
+
+.col-60 .comienzo_content .comienzo button{
+  padding: 3% 5%;
+  cursor: pointer;
+  background: #E84A5F;
+  border: 1px solid #fff;
+  color: #fff;
+  text-align: center;
+  transition-duration: 0.4s;
+}
+
+.col-60 .comienzo_content .comienzo button:hover{
+  background: #568EE8;
+  border: 0px;
+  color: #000;
+}
+
 .col-60 .piezas img{
   width: 99%;
   border: 1px solid #427e89;
 }
 
-#flecha{
-  /* font-size: 60px; */
+#ultimo-mov {
+  padding: 10px;
+  background: #fbfbfb;
+  margin: 10px 0px;
+}
+
+#ultimo-mov #flecha,#mov{
+  display: inline-block;
+}
+
+#ultimo-mov #flecha{
+  width: 38%;
+}
+
+#ultimo-mov #mov{
+  width: 60%;
 }
 
 .texto-centrado {
@@ -72,6 +120,7 @@ li::before {
 }
 
 #juego {
+  display: none;
   padding: 0;
   margin: 0;
   font-size: 0;
@@ -80,6 +129,12 @@ li::before {
 #juego div {
   text-align: center;
   animation: fadein 2s;
+}
+
+#footer {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
 }
 
 @keyframes fadein {
